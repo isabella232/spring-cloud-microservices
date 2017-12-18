@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+   eureka-server:
+    build: ./discovery-service 
+    ports:
+      - "8761:8761"
+    networks:
+      - private-cloud-network
+      
+   zuul:
+    build: ./gateway-service 
+    ports:
+      - "8765:8765"
+    depends_on:
+      - eureka-server
+      - test1
+      - test2
+      - test3
+    networks:
+      - private-cloud-network
+      
+   test1:
+    build: ./test1-service
+    depends_on:
+      - eureka-server        
+    networks:
+      - private-cloud-network
+      
+   test2:
+    build: ./test2-service
+    depends_on:
+      - eureka-server     
+    networks:
+      - private-cloud-network
+      
+   test3:
+    build: ./test3-service
+    depends_on:
+      - eureka-server    
+    networks:
+      - private-cloud-network
+      
+networks:
+  private-cloud-network:
+     driver: bridge
