@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 
 services:
    eureka-server:
@@ -23,7 +23,7 @@ services:
    test1:
     build: ./test1-service
     depends_on:
-      - eureka-server        
+      - eureka-server
     networks:
       - private-cloud-network
       
@@ -41,6 +41,14 @@ services:
     networks:
       - private-cloud-network
       
+   zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+        - "9411:9411"
+    networks:
+      - private-cloud-network  
+       
 networks:
   private-cloud-network:
      driver: bridge

@@ -1,6 +1,9 @@
 info:
   component: Gateway Server
-  
+
+server:  
+  port: ${PORT:8765}
+    
 endpoints:
   restart:
     enabled: true
@@ -32,9 +35,6 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka/
     registerWithEureka: false
       
-server:
-  port: 8765
-
 logging:
   level:
     ROOT: INFO

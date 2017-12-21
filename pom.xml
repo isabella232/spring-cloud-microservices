@@ -6,24 +6,42 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<parent>
+	<!--parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
 		<version>Dalston.SR4</version>
-	</parent>
+	</parent-->
 
 	<properties>
-		<spring.boot>1.5.4.RELEASE</spring.boot>
-		<spring.boot.eureka>1.4.0.RELEASE</spring.boot.eureka>
+		<!--spring.boot>1.5.4.RELEASE</spring.boot>
+		<spring.boot.eureka>1.4.0.RELEASE</spring.boot.eureka-->
 		<java.version>1.8</java.version>
 	</properties>
-
+	
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+	</parent>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Edgware.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<modules>
 		<module>discovery-service</module>
 		<module>test1-service</module>
 		<module>test2-service</module>
 		<module>test3-service</module>
-		<module>gateway-service</module>				
+		<module>gateway-service</module>
 	</modules>
-
 </project>
