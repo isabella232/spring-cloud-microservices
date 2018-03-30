@@ -16,30 +16,22 @@ All should be set till this point. Wait for all containers to up and you can now
 
 <b>Zuul:</b> http://localhost:8765/
 
-<b>Test1 Service:</b> 
-http://localhost:8765/api/test1
+<b>Test1 Service:</b> http://localhost:8765/api/test1
 
-<b>Test1 Service: hits DB to list the list of items</b> 
-http://localhost:8765/api/test1/items
+<b>Test1 Service: hits DB to list the list of items</b> http://localhost:8765/api/test1/items
 
-<b>Test1 Service: hits DB to fetch the item with id 102</b> 
-http://localhost:8765/api/test1/item/102
+<b>Test1 Service: hits DB to fetch the item with id 102</b> http://localhost:8765/api/test1/item/102
 
-<b>Test2 Service:</b> 
-http://localhost:8765/api/test2
+<b>Test2 Service:</b> http://localhost:8765/api/test2
 
-<b>Test2 Service: calls test1 service to get the list of items.</b> 
-https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html
-
-http://localhost:8765/api/test2/test1/items
+<b>Test2 Service: calls test1 service to get the list of items.</b> http://localhost:8765/api/test2/test1/items
 
 Please follow the link given below ro understand how test2 service calls test1 service methods 
 https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html
 
-<b>Test3 Service:</b> 
-http://localhost:8765/api/test3
+<b>Test3 Service:</b> http://localhost:8765/api/test3
 
-To stop & shut down,  run the following command:
+To stop & shut down, run the following command:
 
 $ docker-compose down --rmi all
 
