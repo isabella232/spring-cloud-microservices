@@ -16,7 +16,6 @@ services:
       - eureka-server
       - test1
       - test2
-      - test3
     networks:
       - private-cloud-network
       
@@ -24,6 +23,7 @@ services:
     build: ./test1-service
     depends_on:
       - eureka-server
+      - mysql-database
     networks:
       - private-cloud-network
       
@@ -37,15 +37,22 @@ services:
    test3:
     build: ./test3-service
     depends_on:
-      - eureka-server    
+      - eureka-server     
     networks:
       - private-cloud-network
+      
+   mysql-database:
+    build: ./mysql-database    
+    networks:
+      - private-cloud-network
+    environment:
+       MYSQL_ROOT_PASSWORD: root      
       
    zipkin:
     image: openzipkin/zipkin
     container_name: zipkin
     ports:
-        - "9411:9411"
+      - "9411:9411"
     networks:
       - private-cloud-network  
        

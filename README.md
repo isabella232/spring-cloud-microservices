@@ -8,6 +8,8 @@ a) mvn clean install from root directory
 
 b) $ docker-compose up
 
+docker-compose will create a bridge network and launch three sprint boot microservices containers (one for each; test1, test2, test3), and one MySQL DB conianter. test1 service will interact with database to fetch the list of items. 
+
 All should be set till this point. Wait for all containers to up and you can now test the deployments by hitting following URLs.
 
 <b>Eureka:</b> http://localhost:8761/
@@ -16,11 +18,20 @@ All should be set till this point. Wait for all containers to up and you can now
 
 <b>Test1 Service:</b> http://localhost:8765/api/test1
 
+<b>Test1 Service: hits DB to list the list of items</b> http://localhost:8765/api/test1/items
+
+<b>Test1 Service: hits DB to fetch the item with id 102</b> http://localhost:8765/api/test1/item/102
+
 <b>Test2 Service:</b> http://localhost:8765/api/test2
+
+<b>Test2 Service: calls test1 service to get the list of items.</b> http://localhost:8765/api/test2/test1/items
+
+Please follow the link given below ro understand how test2 service calls test1 service methods 
+https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html
 
 <b>Test3 Service:</b> http://localhost:8765/api/test3
 
-To stop & shut down,  run the following command:
+To stop & shut down, run the following command:
 
 $ docker-compose down --rmi all
 

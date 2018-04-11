@@ -10,7 +10,17 @@ spring:
     level:
       org.springframework: WARN
       org.springframework.web.servlet.DispatcherServlet: DEBUG
-  
+  datasource:
+      url: jdbc:mysql://mysql-database:3306/item
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      
 eureka:  
   client:
     serviceUrl:
@@ -18,3 +28,7 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
+    
+ribbon:
+  eureka:
+    enabled: true
